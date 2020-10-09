@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function modalOpen() {
         modal.style.display = "block";
         document.body.style.overflow = 'hidden';
+        modal.classList.add('foresc');
         clearTimeout(modalTimer);
     }
 
@@ -109,8 +110,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function modalClose() {
-        modal.removeAttribute("style");
-        document.body.removeAttribute("style");
+        modal.style.display = "";
+        document.body.style.overflow = '';
+        modal.classList.remove('foresc');
     }
 
     dataClose.addEventListener('click', modalClose);
@@ -122,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.code === "Escape") {
+        if (e.code === "Escape"  && modal.classList.contains('foresc')) {
             modalClose();
         }
     });
